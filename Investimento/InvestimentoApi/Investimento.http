@@ -1,0 +1,6 @@
+@Investimento_HostAddress = http://localhost:18080
+
+GET {{Investimento_HostAddress}}/api/health/check
+Accept: application/json
+
+###
