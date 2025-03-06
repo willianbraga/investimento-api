@@ -1,0 +1,18 @@
+# Ignorar arquivos do Visual Studio
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Ignorar pastas do Node.js (se estiver usando Node.js)
+node_modules/
+
+# Ignorar arquivos temporários
+*.log
+*.tmp
+
+# Ignorar arquivos de build
+bin/
+obj/
