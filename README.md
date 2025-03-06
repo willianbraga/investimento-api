@@ -57,3 +57,7 @@ Dia 1
 
 A principio no primeiro dia, pensei em me planejar em questao de tempo e atividades pendentes tentando imaginar a solucao de acordo com os pre requisitos solicitados.
 Estruturei a solucao utilizando DDD ja pensando em uma estrutura SOA.
+
+Dia 2
+
+Analisando no dia seguinte a solucao me veio a ideia de considera em quebrar a api em api e worker utilizando rabbitmq para enfileirar as requisicoes, a principio seria muito bem viavel mas tem pontos a se considerar como concorrencia, necessidade atual da solucao entre outros pontos, deixarei para decidir no futuro tal mudanca a principio irie continuar com o desenvolvimento.
