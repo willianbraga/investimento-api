@@ -1,4 +1,5 @@
 
+using Investimento.Api.IoC;
 using Investimento.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -11,6 +12,8 @@ namespace Investimento
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.SetDependencyInjection();
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<InvestimentoDbContext>(options =>
