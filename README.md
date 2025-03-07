@@ -4,10 +4,10 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 
 
 📅 Cronograma do Projeto
-| Dia  | Tarefa | Tempo Estimado |
-| ------------- | ------------- | ------------ |
-| 1️⃣  | Configuração inicial  | 5h |
-| 2️⃣  | Implementação do endpoint  | 5h |
+| Dia  | Tarefa | Tempo Estimado | Realizado |
+| ------------- | ------------- | ------------ | ------------ |
+| 1️⃣  | Configuração inicial  | 5h | 3h |
+| 2️⃣  | Implementação do endpoint  | 5h | 3,5h |
 | 3️⃣  | Testes  | 5h |
 | 4️⃣  | Observabilidade  | 8h |
 | 5️⃣  | Docker  | 5h |
@@ -16,15 +16,15 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 
 
 📌 Como Dividi as Tarefas
-| Dia  | Tarefa | Tempo Estimado |
-| ------------- | ------------- | ------------ |
-| 1️⃣   | Criar repositório e estrutura  | 1,5h |
-|      | Configurar banco de dados  | 2h |
-|     | Criar endpoint mock  | 2h |
-|     | Versionamento inicial  | 0,5h |
-| 2️⃣  | Criar repositório  | 2h |
+| Dia  | Tarefa | Tempo Estimado | Realizado |
+| ------------- | ------------- | ------------ | ------------ |
+| 1️⃣   | Criar repositório e estrutura  | 1,5h | 1h |
+|      | Configurar banco de dados  | 2h | 1h |
+|     | Criar endpoint mock  | 2h | 0,5h |
+|     | Versionamento inicial  | 0,5h | 0,5h |
+| 2️⃣  | Criar repositório  | 2h | 1h |
 |   | Implementar endpoint real  | 2h |
-|   | Testar API local  | 1h |
+|   | Testar API local  | 1h | 0,5h |
 | 3️⃣  | Criar testes unitários  | 2h |
 |   | Criar testes de integração  | 2h |
 |   | Executar e corrigir falhas  | 1h |
@@ -47,7 +47,7 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 
 🚀 Andamento do Projeto
 
-✅ Dia 1 - Configuração Inicial
+✅ Dia 1 - Configuração Inicial (Tempo gasto: **3h**)
 
 O primeiro dia foi mais focado no planejamento e na criação da estrutura base do projeto. 
 Quis definir um modelo que fosse organizado e flexível, então escolhi seguir DDD (Domain-Driven Design) e pensei em uma estrutura SOA (Service-Oriented Architecture).
@@ -62,7 +62,7 @@ Nesse momento, não quis complicar demais com microsserviços, então mantive tu
 - [x] Criado um endpoint mockado para testes iniciais
 
 
-✅ Dia 2 - Implementação dos Endpoints e Banco de Dados
+✅ Dia 2 - Implementação dos Endpoints e Banco de Dados (Tempo gasto: **3,5h**)
 
 
 No segundo dia, veio a dúvida sobre usar RabbitMQ e quebrar a API em uma arquitetura separada entre API e Worker. Eu pensei bastante sobre isso e vi que poderia ser uma boa ideia, mas, por enquanto, decidi seguir com a API monolítica para garantir que a entrega fosse funcional. Se sobrar tempo, faço uma análise mais detalhada sobre a viabilidade dessa mudança.
@@ -77,6 +77,8 @@ No segundo dia, veio a dúvida sobre usar RabbitMQ e quebrar a API em uma arquit
 - [x] RabbitMQ fica em pausa – Decidi manter o foco na API monolítica e avaliar a necessidade da fila depois.
 
 📌 Dia 3 → Testes unitários e de integração
+
+Iniciando o terceiro dia com foco na implementação dos testes unitários e de integração. Se possível, tentarei adiantar parte do desenvolvimento do Dia 4 para ganhar tempo extra para possíveis melhorias no projeto.
 
 🔹 O que foi feito?
 

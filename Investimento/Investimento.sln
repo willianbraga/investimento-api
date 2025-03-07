@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investimento.CrossHelpers",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investimento.Api", "Investimento.Api\Investimento.Api.csproj", "{EFFFF971-ECD8-CACA-833E-1F4EA2DD57E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investimento.Tests", "Investimento.Tests\Investimento.Tests.csproj", "{5FD7ED5F-EF3F-438B-9AF6-4B670DB74EA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{EFFFF971-ECD8-CACA-833E-1F4EA2DD57E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFFFF971-ECD8-CACA-833E-1F4EA2DD57E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFFFF971-ECD8-CACA-833E-1F4EA2DD57E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FD7ED5F-EF3F-438B-9AF6-4B670DB74EA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FD7ED5F-EF3F-438B-9AF6-4B670DB74EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FD7ED5F-EF3F-438B-9AF6-4B670DB74EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FD7ED5F-EF3F-438B-9AF6-4B670DB74EA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{D79F1FA9-9230-439D-8CA7-4FDF5E7F9A73} = {EE8B9D4E-DDEE-4AA2-9AAE-D13C1848C211}
 		{9BF67067-8712-4736-BC11-CD4193E9A15F} = {EE8B9D4E-DDEE-4AA2-9AAE-D13C1848C211}
 		{EFFFF971-ECD8-CACA-833E-1F4EA2DD57E2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{5FD7ED5F-EF3F-438B-9AF6-4B670DB74EA4} = {3F637621-2286-4897-83CA-5DB11B907C24}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {095314DD-0766-4A43-8CBE-22F8AD333450}
