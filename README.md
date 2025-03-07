@@ -61,3 +61,5 @@ Estruturei a solucao utilizando DDD ja pensando em uma estrutura SOA.
 Dia 2
 
 Analisando no dia seguinte a solucao me veio a ideia de considera em quebrar a api em api e worker utilizando rabbitmq para enfileirar as requisicoes, a principio seria muito bem viavel mas tem pontos a se considerar como concorrencia, necessidade atual da solucao entre outros pontos, deixarei para decidir no futuro tal mudanca a principio irie continuar com o desenvolvimento.
+
+Repositorio finalizado, conexao com banco de dados funcional, concluido estrutura, controller-app-service-repo e feito testes manuais via postman, tudo funcional.

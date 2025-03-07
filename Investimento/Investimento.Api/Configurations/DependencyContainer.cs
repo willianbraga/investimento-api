@@ -1,7 +1,9 @@
-﻿using Investimento.Domain.Interfaces.Repositories;
+﻿using Investimento.App;
+using Investimento.App.Interfaces;
+using Investimento.Domain.Interfaces.Repositories;
+using Investimento.Domain.Interfaces.Services;
+using Investimento.Domain.Services;
 using Investimento.Repository;
-using Investimento.Repository.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace Investimento.Api.Configurations
 {
@@ -20,12 +22,12 @@ namespace Investimento.Api.Configurations
 
         private static void RegisterApps(IServiceCollection services)
         {
-
+            services.AddScoped<IInvestimentoApp, InvestimentoApp>();
         }
 
         private static void RegisterServices(IServiceCollection services)
         {
-
+            services.AddScoped<IInvestimentoService, InvestimentoService>();
         }
 
         private static void RegisterRepositories(IServiceCollection services)
