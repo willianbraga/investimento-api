@@ -1,4 +1,9 @@
-﻿namespace Investimento.Api.IoC
+﻿using Investimento.Domain.Interfaces.Repositories;
+using Investimento.Repository;
+using Investimento.Repository.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace Investimento.Api.Configurations
 {
     public static class DependencyContainer
     {
@@ -25,7 +30,7 @@
 
         private static void RegisterRepositories(IServiceCollection services)
         {
-
+            services.AddScoped<IInvestimentoRepository, InvestimentoRepository>();
         }
     }
 }

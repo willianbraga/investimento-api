@@ -1,9 +1,8 @@
 
-using Investimento.Api.IoC;
+using Investimento.Api.Configurations;
 using Investimento.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace Investimento
 {

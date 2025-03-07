@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Investimento.CrossHelpers\Investimento.CrossHelpers.csproj" />
+    <ProjectReference Include="..\Investimento.Domain\Investimento.Domain.csproj" />
   </ItemGroup>
 
 </Project>
