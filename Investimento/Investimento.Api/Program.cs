@@ -3,6 +3,7 @@ using Investimento.Api.Configurations;
 using Investimento.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Serilog;
 
 namespace Investimento
 {
@@ -11,6 +12,14 @@ namespace Investimento
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .WriteTo.Seq("http://localhost:5341")
+            .Enrich.FromLogContext()
+            .CreateLogger();
+
+            builder.Host.UseSerilog();
 
             builder.Services.SetDependencyInjection();
 
@@ -26,6 +35,8 @@ namespace Investimento
                .AddCheck("Health Check", () => HealthCheckResult.Healthy("Service is running"));
 
             var app = builder.Build();
+
+            app.UseSerilogRequestLogging();
 
             app.UseSwagger();
             app.UseSwaggerUI();
