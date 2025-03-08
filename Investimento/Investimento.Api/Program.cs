@@ -1,9 +1,11 @@
-
 using Investimento.Api.Configurations;
 using Investimento.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using Serilog;
+using OpenTelemetry.Exporter;
 
 namespace Investimento
 {
@@ -20,6 +22,20 @@ namespace Investimento
             .CreateLogger();
 
             builder.Host.UseSerilog();
+
+            builder.Services
+                .AddOpenTelemetry()
+                .ConfigureResource(resource => resource.AddService("Investimento.Api"))
+                .WithTracing(tracing => tracing
+                    .AddAspNetCoreInstrumentation()
+                    .AddHttpClientInstrumentation()
+                    .AddOtlpExporter(options =>
+                    {
+                        options.Endpoint = new Uri("http://localhost:5341/ingest/otlp/v1/traces");
+                        options.Protocol = OtlpExportProtocol.HttpProtobuf;
+                    })
+                    .AddConsoleExporter()
+                );
 
             builder.Services.SetDependencyInjection();
 
