@@ -89,6 +89,18 @@ Iniciando o terceiro dia com foco na implementação dos testes unitários e de 
 🔹 Decisão
 - [x] Irei puxar alguma parte do dia 4 para adiantar parte do desenvolvimento e ganhar tempo.
   
+🔹 Decisão técnica importante:
+
+Durante o estudo sobre logs estruturados, avaliei algumas opções para melhorar a visualização e análise dos logs da API. Inicialmente, a ideia era apenas utilizar Serilog gravando em arquivo, mas percebi que isso poderia dificultar a leitura e a busca por eventos específicos.
+
+Após estudar algumas soluções, decidi integrar o Seq, que oferece uma interface web intuitiva para análise dos logs em tempo real. Com essa mudança, agora posso monitorar os eventos da API de forma mais organizada, com filtros e buscas estruturadas.
+
+🔹 Decisão tomada:
+
+- [x] Implementar Serilog com Seq para melhorar a rastreabilidade dos logs.
+- [x] Configurar o Seq localmente, permitindo análise em tempo real.
+- [x] Manter a possibilidade de adicionar novos sinks (exemplo: arquivos, cloud, banco de dados) no futuro, se necessário.
+
 📌 Dia 4 → Observabilidade com Serilog, OpenTelemetry e Prometheus
 
 🔹 O que foi feito?
