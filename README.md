@@ -8,7 +8,7 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 | ------------- | ------------- | ------------ | ------------ |
 | 1️⃣  | Configuração inicial  | 5h | 3h |
 | 2️⃣  | Implementação do endpoint  | 5h | 3,5h |
-| 3️⃣  | Testes  | 5h |
+| 3️⃣  | Testes  | 5h | 4h |
 | 4️⃣  | Observabilidade  | 8h |
 | 5️⃣  | Docker  | 5h |
 | 6️⃣  | AWS e ajustes gerais  | 5h |
@@ -25,9 +25,9 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 | 2️⃣  | Criar repositório  | 2h | 1h |
 |   | Implementar endpoint real  | 2h |
 |   | Testar API local  | 1h | 0,5h |
-| 3️⃣  | Criar testes unitários  | 2h |
-|   | Criar testes de integração  | 2h |
-|   | Executar e corrigir falhas  | 1h |
+| 3️⃣  | Criar testes unitários  | 1h |
+|   | Criar testes de integração  | 1h |
+|   | Executar e corrigir falhas  | 2h |
 | 4️⃣  | Estudar Serilog, OpenTelemetry e Prometheus  | 2,5h |
 |   | Implementar Serilog  | 1,5h |
 |   | Implementar OpenTelemetry  | 1,5h |
@@ -76,14 +76,18 @@ No segundo dia, veio a dúvida sobre usar RabbitMQ e quebrar a API em uma arquit
 🔹 Decisão técnica importante:
 - [x] RabbitMQ fica em pausa – Decidi manter o foco na API monolítica e avaliar a necessidade da fila depois.
 
-📌 Dia 3 → Testes unitários e de integração
+📌 Dia 3 → Testes unitários e de integração (Tempo gasto: **4h**)
 
 Iniciando o terceiro dia com foco na implementação dos testes unitários e de integração. Se possível, tentarei adiantar parte do desenvolvimento do Dia 4 para ganhar tempo extra para possíveis melhorias no projeto.
 
 🔹 O que foi feito?
 
-- [x]
+- [x] Testes unitários no repositório e serviços
+- [x] Testes de integração corrigidos e rodando sem erros
+- [x] Refatorações para melhorar performance e depuração
 
+🔹 Decisão
+- [x] Irei puxar alguma parte do dia 4 para adiantar parte do desenvolvimento e ganhar tempo.
   
 📌 Dia 4 → Observabilidade com Serilog, OpenTelemetry e Prometheus
 
