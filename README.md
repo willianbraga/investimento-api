@@ -9,7 +9,7 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 | 1️⃣  | Configuração inicial  | 5h | 3h |
 | 2️⃣  | Implementação do endpoint  | 5h | 3,5h |
 | 3️⃣  | Testes  | 5h | 4h |
-| 4️⃣  | Observabilidade  | 8h | 3h |
+| 4️⃣  | Observabilidade  | 8h | 6h |
 | 5️⃣  | Docker  | 5h |
 | 6️⃣  | AWS e ajustes gerais  | 5h |
 | 7️⃣  | Documentação e revisão final  | 5h |
@@ -32,9 +32,9 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 |   | Implementar Serilog  | 1,5h | 1h |
 |   | Implementar Seq | 1,5h | 1h |
 |   | Implementar OpenTelemetry  | 1,5h | 1h |
-|   | Implementar Prometheus  | 1,5h |
-|   | Implementar Grafana | 1,5h |
-|   | Executar e corrigir falhas  | 1h |
+|   | Implementar Prometheus  | 1,5h | 1h |
+|   | Implementar Grafana | 1,5h | 1h |
+|   | Executar e corrigir falhas  | 1h | 2h |
 | 5️⃣  | Estudar Docker  | 1h |
 |   | Criar Dockerfile  | 2h |
 |   | Criar docker-compose  | 2h |
@@ -111,15 +111,21 @@ Fiquei pensando... Com Serilog, OpenTelemetry e Prometheus/Grafana no projeto, s
 - [x] Habilitação do suporte OTLP no Seq
 - [x] Estudo sobre a necessidade do Seq
 
-📌 Dia 4 → Observabilidade com Serilog, OpenTelemetry e Prometheus/Grafana
+✅ Dia 4 → Observabilidade com Serilog, OpenTelemetry e Prometheus/Grafana
 
 Como no dia anterior adiantei parte do Serilog, OpenTelemetry e da integração com o Seq, darei foco na finalização do Prometheus e Grafana.
 
 🔹 O que foi feito?
 
-- [x]
+- [x] Instalei e configurei o Prometheus e Grafana localmente
+- [x] Implementei a captura de métricas na API usando o prometheus-net
+- [x] Ajustei o Prometheus para coletar as métricas corretamente
+- [x] Efetuei vários requests para garantir que os dados estavam sendo armazenados
+- [x] Testei as consultas no Prometheus e configurei dashboards no Grafana
+- [x] Fiz ajustes finais e tudo está funcional
 
-  
+Agora tentar adiantar a parte do Docker para otimizar o tempo e preparar a API para rodar de forma isolada.
+
 📌 Dia 5 → Preparar a API para rodar no Docker
 
 🔹 O que foi feito?
