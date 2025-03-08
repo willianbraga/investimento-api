@@ -2,11 +2,6 @@
 using Investimento.Domain.Interfaces.Services;
 using Investimento.Domain.Services;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Investimento.Tests.Services
 {
@@ -26,7 +21,7 @@ namespace Investimento.Tests.Services
         {
             var investimentosFake = new List<CrossHelpers.Entities.Investimento>
             {
-                new CrossHelpers.Entities.Investimento { NomeProduto = "Fundo XPTO", CodigoProduto = "XPTO", Saldo = 5000.00m, Agencia = "0001", Conta = "123456", DAC = "7" }
+                new CrossHelpers.Entities.Investimento { NomeProduto = "Fundo XPTO", CodigoProduto = "XPTO", Saldo = 1000.00m, Agencia = "0001", Conta = "123456", DAC = "7" }
             };
 
             _mockRepository.Setup(repo => repo.BuscarInvestimentosAsync("0001", "123456", "7"))

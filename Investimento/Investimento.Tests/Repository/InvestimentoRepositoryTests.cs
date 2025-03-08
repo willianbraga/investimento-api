@@ -34,14 +34,14 @@ namespace Investimento.Tests.Repository
             {
                 NomeProduto = "Fundo XPTO",
                 CodigoProduto = "XPTO",
-                Saldo = 10000.50m,
-                Agencia = "0001",
+                Saldo = 1000.00m,
+                Agencia = "0002",
                 Conta = "123456",
                 DAC = "7"
             };
 
             await _investimentoRepository.AdicionarInvestimentoAsync(investimento);
-            var investimentos = await _investimentoRepository.BuscarInvestimentosAsync("0001", "123456", "7");
+            var investimentos = await _investimentoRepository.BuscarInvestimentosAsync("0002", "123456", "7");
 
             Assert.Single(investimentos);
             Assert.Equal("Fundo XPTO", investimentos[0].NomeProduto);
@@ -50,8 +50,8 @@ namespace Investimento.Tests.Repository
         [Fact]
         public async Task Deve_Retornar_Investimentos_Corretos()
         {
-            var investimento1 = new CrossHelpers.Entities.Investimento { NomeProduto = "Fundo XPTO", CodigoProduto = "XPTO", Saldo = 5000.00m, Agencia = "0001", Conta = "123456", DAC = "7" };
-            var investimento2 = new CrossHelpers.Entities.Investimento { NomeProduto = "Fundo YPTO", CodigoProduto = "YPTO", Saldo = 8000.00m, Agencia = "0001", Conta = "123456", DAC = "7" };
+            var investimento1 = new CrossHelpers.Entities.Investimento { NomeProduto = "Fundo XPTO", CodigoProduto = "XPTO", Saldo = 1000.00m, Agencia = "0001", Conta = "123456", DAC = "7" };
+            var investimento2 = new CrossHelpers.Entities.Investimento { NomeProduto = "Fundo YPTO", CodigoProduto = "YPTO", Saldo = 2000.00m, Agencia = "0001", Conta = "123456", DAC = "7" };
 
             await _investimentoRepository.AdicionarInvestimentoAsync(investimento1);
             await _investimentoRepository.AdicionarInvestimentoAsync(investimento2);
@@ -72,7 +72,7 @@ namespace Investimento.Tests.Repository
             {
                 NomeProduto = "Fundo XPTO",
                 CodigoProduto = "XPTO",
-                Saldo = 10000.50m,
+                Saldo = 1000.00m,
                 Agencia = "0001",
                 Conta = "123456",
                 DAC = "7"
