@@ -6,6 +6,7 @@ using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Serilog;
 using OpenTelemetry.Exporter;
+using Prometheus;
 
 namespace Investimento
 {
@@ -53,6 +54,8 @@ namespace Investimento
             var app = builder.Build();
 
             app.UseSerilogRequestLogging();
+            app.UseMetricServer();
+            app.UseHttpMetrics();
 
             app.UseSwagger();
             app.UseSwaggerUI();
