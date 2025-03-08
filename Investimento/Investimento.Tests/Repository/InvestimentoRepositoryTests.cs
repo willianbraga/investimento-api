@@ -33,7 +33,7 @@ namespace Investimento.Tests.Repository
             var investimento = new CrossHelpers.Entities.Investimento
             {
                 NomeProduto = "Fundo XPTO",
-                CodigoProduto = "XPTO123",
+                CodigoProduto = "XPTO",
                 Saldo = 10000.50m,
                 Agencia = "0001",
                 Conta = "123456",
@@ -50,8 +50,8 @@ namespace Investimento.Tests.Repository
         [Fact]
         public async Task Deve_Retornar_Investimentos_Corretos()
         {
-            var investimento1 = new CrossHelpers.Entities.Investimento { NomeProduto = "Fundo A", CodigoProduto = "A1", Saldo = 5000.00m, Agencia = "0001", Conta = "123456", DAC = "7" };
-            var investimento2 = new CrossHelpers.Entities.Investimento { NomeProduto = "Fundo B", CodigoProduto = "B1", Saldo = 8000.00m, Agencia = "0001", Conta = "123456", DAC = "7" };
+            var investimento1 = new CrossHelpers.Entities.Investimento { NomeProduto = "Fundo XPTO", CodigoProduto = "XPTO", Saldo = 5000.00m, Agencia = "0001", Conta = "123456", DAC = "7" };
+            var investimento2 = new CrossHelpers.Entities.Investimento { NomeProduto = "Fundo YPTO", CodigoProduto = "YPTO", Saldo = 8000.00m, Agencia = "0001", Conta = "123456", DAC = "7" };
 
             await _investimentoRepository.AdicionarInvestimentoAsync(investimento1);
             await _investimentoRepository.AdicionarInvestimentoAsync(investimento2);
@@ -59,8 +59,8 @@ namespace Investimento.Tests.Repository
             var investimentos = await _investimentoRepository.BuscarInvestimentosAsync("0001", "123456", "7");
 
             Assert.Equal(2, investimentos.Count);
-            Assert.Contains(investimentos, i => i.NomeProduto == "Fundo A");
-            Assert.Contains(investimentos, i => i.NomeProduto == "Fundo B");
+            Assert.Contains(investimentos, i => i.NomeProduto == "Fundo XPTO");
+            Assert.Contains(investimentos, i => i.NomeProduto == "Fundo YPTO");
         }
 
         [Fact]
@@ -71,7 +71,7 @@ namespace Investimento.Tests.Repository
             var investimento = new CrossHelpers.Entities.Investimento
             {
                 NomeProduto = "Fundo XPTO",
-                CodigoProduto = "XPTO123",
+                CodigoProduto = "XPTO",
                 Saldo = 10000.50m,
                 Agencia = "0001",
                 Conta = "123456",
