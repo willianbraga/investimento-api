@@ -101,9 +101,15 @@ Após estudar algumas soluções, decidi integrar o Seq, que oferece uma interfa
 - [x] Configurar o Seq localmente, permitindo análise em tempo real.
 - [x] Manter a possibilidade de adicionar novos sinks (exemplo: arquivos, cloud, banco de dados) no futuro, se necessário.
 
-Fiquei pensando... Com Serilog, OpenTelemetry e Prometheus/Grafana no projeto, será que realmente precisamos do Seq? No fim das contas, as informações poderiam ser enviadas diretamente entre essas ferramentas ou até armazenadas em arquivos, banco ou outro destino sem depender dele. Mas, por enquanto, acho que vale a pena manter. Ele facilita a organização dos logs e torna o rastreamento de eventos bem mais prático. Se em algum momento começar a virar um peso extra de administração ou deixar de fazer sentido, dá pra remover sem grandes impactos. A estrutura já está flexível o suficiente pra isso.
+Fiquei pensando... Com Serilog, OpenTelemetry e Prometheus/Grafana no projeto, será que realmente precisamos do Seq? No fim das contas as informações poderiam ser enviadas diretamente entre essas ferramentas ou até armazenadas em arquivos, banco ou outro destino sem depender dele. Hummm, por enquanto acho que vale a pena manter. Ele facilita a organização dos logs e torna o rastreamento de eventos bem mais prático. Se em algum momento começar a virar um peso extra de administração ou deixar de fazer sentido, dá pra remover sem grandes impactos. A estrutura já está flexível o suficiente pra isso.
 
-📌 Dia 4 → Observabilidade com Serilog, OpenTelemetry e Prometheus
+🔹 O que foi feito? Tempo gasto: **3h**
+
+- [x] Implementação do OpenTelemetry
+- [x] Habilitação do suporte OTLP no Seq
+- [x] Estudo sobre a necessidade do Seq
+
+📌 Dia 4 → Observabilidade com Serilog, OpenTelemetry e Prometheus/Grafana
 
 🔹 O que foi feito?
 
