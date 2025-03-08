@@ -23,11 +23,11 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 |     | Criar endpoint mock  | 2h | 0,5h |
 |     | Versionamento inicial  | 0,5h | 0,5h |
 | 2️⃣  | Criar repositório  | 2h | 1h |
-|   | Implementar endpoint real  | 2h |
+|   | Implementar endpoint real  | 2h | 2h |
 |   | Testar API local  | 1h | 0,5h |
-| 3️⃣  | Criar testes unitários  | 1h |
-|   | Criar testes de integração  | 1h |
-|   | Executar e corrigir falhas  | 2h |
+| 3️⃣  | Criar testes unitários  | 1,5h | 1h |
+|   | Criar testes de integração  | 1,5h | 1h |
+|   | Executar e corrigir falhas  | 2h | 2h |
 | 4️⃣  | Estudar Serilog, OpenTelemetry e Prometheus  | 2,5h |
 |   | Implementar Serilog  | 1,5h |
 |   | Implementar OpenTelemetry  | 1,5h |
