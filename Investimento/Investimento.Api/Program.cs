@@ -16,13 +16,19 @@ namespace Investimento
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            var seqUrl = builder.Environment.IsDevelopment()
+                ? "http://localhost:5341"
+                : "http://seq:80";
+
             Log.Logger = new LoggerConfiguration()
             .WriteTo.Console()
-            .WriteTo.Seq("http://localhost:5341")
+            .WriteTo.Seq(seqUrl)
             .Enrich.FromLogContext()
             .CreateLogger();
 
             builder.Host.UseSerilog();
+
+            builder.WebHost.UseUrls("http://0.0.0.0:8080");
 
             builder.Services
                 .AddOpenTelemetry()
@@ -32,18 +38,20 @@ namespace Investimento
                     .AddHttpClientInstrumentation()
                     .AddOtlpExporter(options =>
                     {
-                        options.Endpoint = new Uri("http://localhost:5341/ingest/otlp/v1/traces");
+                        options.Endpoint = new Uri(seqUrl + "/ingest/otlp/v1/traces");
                         options.Protocol = OtlpExportProtocol.HttpProtobuf;
                     })
                     .AddConsoleExporter()
                 );
 
-            builder.Services.SetDependencyInjection();
+            var connectionString = builder.Environment.IsDevelopment()
+                ? builder.Configuration.GetConnectionString("LocalConnection")
+                : builder.Configuration.GetConnectionString("DockerConnection");
 
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<InvestimentoDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
+            builder.Services.SetDependencyInjection();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

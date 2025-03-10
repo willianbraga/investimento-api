@@ -9,8 +9,8 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 | 1️⃣  | Configuração inicial  | 5h | 3h |
 | 2️⃣  | Implementação do endpoint  | 5h | 3,5h |
 | 3️⃣  | Testes  | 5h | 4h |
-| 4️⃣  | Observabilidade  | 8h | 6h |
-| 5️⃣  | Docker  | 5h |
+| 4️⃣  | Observabilidade  | 8h | 7h |
+| 5️⃣  | Docker  | 5h | 8h |
 | 6️⃣  | AWS e ajustes gerais  | 5h |
 | 7️⃣  | Documentação e revisão final  | 5h |
 
@@ -35,9 +35,10 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 |   | Implementar Prometheus  | 1,5h | 1h |
 |   | Implementar Grafana | 1,5h | 1h |
 |   | Executar e corrigir falhas  | 1h | 2h |
-| 5️⃣  | Estudar Docker  | 1h |
-|   | Criar Dockerfile  | 2h |
-|   | Criar docker-compose  | 2h |
+| 5️⃣  | Estudar Docker  | 1h | 2h |
+|   | Criar Dockerfile  | 2h | 1h |
+|   | Criar docker-compose  | 2h | 1h |
+|   | Migrar solução para Docker | 2h | 4h |
 | 6️⃣  | Estudo AWS  | 2h |
 |   | Criar desenho de arquitetura  | 2h |
 |   | Ajustes finais  | 1h |
@@ -105,17 +106,17 @@ Após estudar algumas soluções, decidi integrar o Seq, que oferece uma interfa
 
 Fiquei pensando... Com Serilog, OpenTelemetry e Prometheus/Grafana no projeto, será que realmente precisamos do Seq? No fim das contas as informações poderiam ser enviadas diretamente entre essas ferramentas ou até armazenadas em arquivos, banco ou outro destino sem depender dele. Hummm, por enquanto acho que vale a pena manter. Ele facilita a organização dos logs e torna o rastreamento de eventos bem mais prático. Se em algum momento começar a virar um peso extra de administração ou deixar de fazer sentido, dá pra remover sem grandes impactos. A estrutura já está flexível o suficiente pra isso.
 
-🔹 O que foi feito? Tempo gasto: **3h**
+🔹 O que foi feito? Tempo gasto: (**3h**)
 
 - [x] Implementação do OpenTelemetry
 - [x] Habilitação do suporte OTLP no Seq
 - [x] Estudo sobre a necessidade do Seq
 
-✅ Dia 4 → Observabilidade com Serilog, OpenTelemetry e Prometheus/Grafana
+✅ Dia 4 → Observabilidade com Serilog, OpenTelemetry e Prometheus/Grafana (Tempo gasto: **7h**)
 
 Como no dia anterior adiantei parte do Serilog, OpenTelemetry e da integração com o Seq, darei foco na finalização do Prometheus e Grafana.
 
-🔹 O que foi feito?
+🔹 O que foi feito? (**4h**)
 
 - [x] Instalei e configurei o Prometheus e Grafana localmente
 - [x] Implementei a captura de métricas na API usando o prometheus-net
@@ -126,14 +127,35 @@ Como no dia anterior adiantei parte do Serilog, OpenTelemetry e da integração 
 
 Agora tentar adiantar a parte do Docker para otimizar o tempo e preparar a API para rodar de forma isolada.
 
-📌 Dia 5 → Preparar a API para rodar no Docker
+🔹 O que foi feito? (**2h**)
 
-🔹 O que foi feito?
+- [x] Adiantado a instalação das ferramentas necessarias.
+- [x] Efetuado a organização estrutural dos arquivos na solução
+- [x] Iniciado a criação do DOCKERFILE e docker-compose.yaml
 
-- [x]
+✅ Dia 5 → Preparar a API para rodar no Docker (Tempo gasto: **8h**)
 
+Ontem já tinha adiantado boa parte dos arquivos de configuração, então hoje a ideia é focar nos testes e ajustes da aplicação rodando no Docker.
 
-📌 Dia 6 → Estudo de AWS e planejamento do 
+🔹 O que aconteceu?
+
+Tive alguns problemas de recurso computacional, o Docker ficou instável e começou a crashar várias vezes. No começo tentei automatizar tudo ao máximo criando um entrypoint que configurava o banco, rodava um script para criar o banco, usuário, permissões e tudo mais. Fiz o script e tudo parecia bem mas começaram a surgir vários desafios na automatização total do banco e do migration.
+
+No fim das contas percebi que isso estava tomando muito tempo. Então decidi simplificar. 
+Vou deixar o Docker cuidando da API, do banco, do Seq, do Prometheus e do Grafana, mas a inicialização do banco vai ser manual (rodando o entrypoint e a migration na mão). Se no futuro isso virar um problema, aí penso em uma solução mais automatizada.
+
+🔹 O que foi feito? (**6h**)
+
+- [x] Finalizada a configuração do Dockerfile e docker-compose.yaml
+- [x] Criei o entrypoint.sh e o init-db.sql para inicializar o banco
+- [x] Resolvi o problema de restart infinito do container do SQL Server
+- [x] Ajustei a conexão entre a API e o banco dentro do Docker
+- [x] Testei a API e o banco rodando nos containers
+- [x] Validei que a API funciona tanto localmente quanto via Docker
+- [x] Ajustei o appsettings.json para suportar os dois ambientes (Docker/local)
+- [x] Testei e finalizei a migração do banco no ambiente Docker
+
+📌 Dia 6 → Estudo AWS, Desenho da solução utilizando serviços AWS
 
 🔹 O que foi feito?
 
