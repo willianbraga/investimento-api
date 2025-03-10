@@ -11,7 +11,7 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 | 3️⃣  | Testes  | 5h | 4h |
 | 4️⃣  | Observabilidade  | 8h | 7h |
 | 5️⃣  | Docker  | 5h | 8h |
-| 6️⃣  | AWS e ajustes gerais  | 5h |
+| 6️⃣  | AWS e ajustes gerais  | 5h | 3h |
 | 7️⃣  | Documentação e revisão final  | 5h |
 
 
@@ -39,9 +39,9 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 |   | Criar Dockerfile  | 2h | 1h |
 |   | Criar docker-compose  | 2h | 1h |
 |   | Migrar solução para Docker | 2h | 4h |
-| 6️⃣  | Estudo AWS  | 2h |
-|   | Criar desenho de arquitetura  | 2h |
-|   | Ajustes finais  | 1h |
+| 6️⃣  | Estudo AWS  | 2h | 1,5h |
+|   | Criar desenho de arquitetura  | 2h | 1h |
+|   | Ajustes finais  | 1h | 0,5h |
 | 7️⃣  | Escrever documentação  | 2h |
 |   | Revisão final  | 2h |
 |   | Commit final  | 1h |
@@ -106,7 +106,7 @@ Após estudar algumas soluções, decidi integrar o Seq, que oferece uma interfa
 
 Fiquei pensando... Com Serilog, OpenTelemetry e Prometheus/Grafana no projeto, será que realmente precisamos do Seq? No fim das contas as informações poderiam ser enviadas diretamente entre essas ferramentas ou até armazenadas em arquivos, banco ou outro destino sem depender dele. Hummm, por enquanto acho que vale a pena manter. Ele facilita a organização dos logs e torna o rastreamento de eventos bem mais prático. Se em algum momento começar a virar um peso extra de administração ou deixar de fazer sentido, dá pra remover sem grandes impactos. A estrutura já está flexível o suficiente pra isso.
 
-🔹 O que foi feito? Tempo gasto: (**3h**)
+🔹 O que foi feito? (**3h**)
 
 - [x] Implementação do OpenTelemetry
 - [x] Habilitação do suporte OTLP no Seq
@@ -155,12 +155,42 @@ Vou deixar o Docker cuidando da API, do banco, do Seq, do Prometheus e do Grafan
 - [x] Ajustei o appsettings.json para suportar os dois ambientes (Docker/local)
 - [x] Testei e finalizei a migração do banco no ambiente Docker
 
-📌 Dia 6 → Estudo AWS, Desenho da solução utilizando serviços AWS
+Como estava no pique, resolvi adiantar o Dia 6 e focar no desenho da arquitetura da solução na AWS.
 
-🔹 O que foi feito?
+✅ Dia 6 → Estudo AWS, Desenho da solução utilizando serviços AWS (Tempo gasto: **3h**)
 
-- [x]
+Passei um tempo estudando os serviços da AWS para entender como encaixar tudo na arquitetura da minha API. Como não tenho tanta experiência com AWS, minha ideia foi evitar complicações desnecessárias e escolher serviços que a própria AWS já gerencia para mim.
 
+🔹 Decisões que tomei
+
+📌 API e Balanceamento de Carga
+A API vai rodar no AWS Fargate com Auto Scaling, então não preciso me preocupar em subir e gerenciar servidores. A AWS cuida disso, e a API escala automaticamente conforme a demanda. Para garantir que o tráfego seja distribuído corretamente, adicionei um Elastic Load Balancer, que ajuda na disponibilidade.
+
+📌 Banco de Dados
+Como preciso usar SQL Server eu optei pelo Amazon RDS que já gerencia backups, replicação e escalabilidade de forma automática. Tem suporte para rodar em Multi-AZ garantindo disponibilidade caso uma zona caia.
+
+📌 Observabilidade e Logs
+Sobre Observabilidade eu fiquei um pouco em dúvida sobre como lidar com os logs e métricas da aplicação. Pensei em duas necessidades principais: 
+
+1. Log de curto prazo (para debug e troubleshooting)
+
+2. Armazenamento de logs a longo prazo (para auditoria ou análise futura)
+
+Para monitoramento e métricas coloquei um EC2 rodando Seq, Prometheus e Grafana. Isso facilita a análise da API em tempo real e permite visualizar os logs e métricas sem precisar acessar diretamente os servidores.
+
+Para armazenamento de logs a longo prazo incluí um Amazon S3 lá posso arquivar logs antigos sem gastar muito.
+
+Ainda não sei se faz sentido salvar logs no DynamoDB para buscas rápidas. Vou avaliar se vale a pena ou se o próprio Seq já resolve essa necessidade.
+
+Minha ideia foi manter tudo o mais simples e funcional possível. Mas já pensei em algumas melhorias que poderiam ser feitas no futuro, sendo elas :
+
+Usar serviços gerenciados da AWS para observabilidade no lugar de rodar Prometheus e Grafana no EC2, poderia usar AWS Managed Grafana e Amazon CloudWatch.
+
+🔹 O que foi feito? (**3h**)
+
+- [x] Estudo dos serviços AWS
+- [x] Desenho da solução
+- [x] Ajustes e melhorias no plano de arquitetura
 
 📌 Dia 7 → Documentação e revisão final
 
