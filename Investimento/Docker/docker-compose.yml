@@ -1,0 +1,63 @@
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: investimento-db
+    restart: always
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "P4ssW0rd"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    volumes:
+      - ./sql-scripts:/docker-entrypoint-initdb.d
+    
+  investimento-api:
+    build:
+      context: ..
+      dockerfile: Docker/Dockerfile
+    container_name: investimento-api
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - seq
+      - prometheus
+      - grafana
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+
+  seq:
+    image: datalust/seq
+    container_name: investimento-seq
+    restart: always
+    ports:
+      - "5341:80"
+    environment:
+      - ACCEPT_EULA=Y
+
+  prometheus:
+    image: prom/prometheus
+    container_name: investimento-prometheus
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    container_name: investimento-grafana
+    restart: always
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+volumes:
+  db_data:
+  grafana_data:
