@@ -1,6 +1,6 @@
 📌 Investimento API
 
-Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API para consulta e cadastro de investimentos de clientes. Durante a implementação, estou ajustando o cronograma e as decisões técnicas conforme necessário, sempre buscando uma solução simples, funcional e bem estruturada.
+Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API para consulta e cadastro de investimentos de clientes. Durante a implementação, estou ajustando o cronograma e as decisões técnicas conforme necessário, sempre buscando uma solução simples, funcional e bem estruturada. No final do documento tem um passo a passo de como rodar a aplicação.
 
 
 📅 Cronograma do Projeto
@@ -197,3 +197,37 @@ Usar serviços gerenciados da AWS para observabilidade no lugar de rodar Prometh
 🔹 O que foi feito?
 
 - [x]
+
+
+📌 Passo a passo para rodar a aplicação no Docker
+
+1. Instalar o Docker Desktop
+- Baixar e instalar o Docker Desktop: (https://www.docker.com/products/docker-desktop/)
+- Após a instalação, abrir o Docker Desktop e garantir que ele esteja rodando.
+
+2. Baixar o código-fonte
+- Acessar o repositório no GitHub: https://github.com/willianbraga/investimento-api/tree/feature/InvestimentoApi
+- Clicar no botão verde <> Code e selecionar a opção Download ZIP.
+- Após o download, descompactar o arquivo em uma pasta de sua preferência.
+
+3. Acessar a pasta do projeto
+- Navegar até a pasta descompactada e entrar no caminho: ...\investimento-api-feature-InvestimentoApi\investimento-api-feature-InvestimentoApi\Investimento\Docker
+- Abrir um Prompt de Comando (CMD) nessa pasta.
+
+4. Subir os containers no Docker
+- No terminal (CMD), executar o seguinte comando: docker-compose up --build
+- Aguardar a finalização e verificar se os containers subiram corretamente com o comando: docker ps
+- Se os containers não estiverem rodando, revisar as mensagens de erro antes de continuar.
+
+5. Configurar o banco de dados
+- No terminal (CMD), executar o seguinte comando para acessar o container do SQL Server rodando no Docker: docker exec -it investimento-db /bin/bash
+- Dentro do container, rodar o script de inicialização do banco: /docker-entrypoint-initdb.d/entrypoint.sh
+- Após a finalização, sair do container: exit
+
+6. Executar a migration para criar as tabelas
+- No terminal (CMD), executar o seguinte comando para voltar um nível na estrutura do projeto: cd ..
+- No terminal (CMD), executar o seguinte comando para acessar a pasta da API: cd Investimento.Api
+- No terminal (CMD), executar o seguinte comando para rodar a migration para garantir que o banco esteja atualizado: dotnet ef database update --connection "Server=localhost;Database=Investimento;User Id=user_api;Password=P4ssW0rd;TrustServerCertificate=True"
+
+7. Acessar a API
+- Abrir o navegador e acessar a URL: http://localhost:8080/swagger/index.html
