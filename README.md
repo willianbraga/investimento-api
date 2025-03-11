@@ -12,7 +12,7 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 | 4️⃣  | Observabilidade  | 8h | 7h |
 | 5️⃣  | Docker  | 5h | 8h |
 | 6️⃣  | AWS e ajustes gerais  | 5h | 3h |
-| 7️⃣  | Documentação e revisão final  | 5h |
+| 7️⃣  | Documentação e revisão final  | 5h | 3h |
 
 
 📌 Como Dividi as Tarefas
@@ -42,9 +42,10 @@ Este projeto é parte de um desafio técnico onde estou desenvolvendo uma API pa
 | 6️⃣  | Estudo AWS  | 2h | 1,5h |
 |   | Criar desenho de arquitetura  | 2h | 1h |
 |   | Ajustes finais  | 1h | 0,5h |
-| 7️⃣  | Escrever documentação  | 2h |
-|   | Revisão final  | 2h |
-|   | Commit final  | 1h |
+| 7️⃣  | Escrever documentação  | 3h |
+|   | Revisão final  | 2,5h |  0,5h |
+|   | Ajustes extra  | 2,5h | 2h |
+|   | Commit final  | 0,5h | 0,5h |
 
 
 
@@ -192,12 +193,19 @@ Usar serviços gerenciados da AWS para observabilidade no lugar de rodar Prometh
 - [x] Desenho da solução
 - [x] Ajustes e melhorias no plano de arquitetura
 
-📌 Dia 7 → Documentação e revisão final
+📌 Dia 7 → Documentação e revisão final (Tempo gasto: **3h**)
 
-🔹 O que foi feito?
+Hoje trabalhei a conclusão da documentação explicativas de como rodar a aplicação em docker, fim uma revisão da api e vi oportunidades de melhoria.
+Refatorei os metodos e separei do investimento os dados da conta, criando 2 tabelas, estrurei a api para comportar mudanças e refiz a parte do EF para o migration,
+Inclui tambem a autenticação JWT de forma simples, incluindo uma nova controller para login e obter o token, e inclui nas controller a necessidade de autenticação.
+Configurei tambem o swagger para possibilitar a inclusão do token por ele para facilitar os teste.
 
-- [x]
+🔹 O que foi feito? (**3h**)
 
+- [x] Documentação final com passo a passo como rodar a aplicação
+- [x] Refatoração da api
+- [x] Incluso autenticação JWT simples
+- [x] Incluso autenticação via Swagger
 
 📌 Passo a passo para rodar a aplicação no Docker
 
