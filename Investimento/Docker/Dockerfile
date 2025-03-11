@@ -53,6 +53,7 @@ COPY Investimento.Repository/*.csproj Investimento.Repository/
 COPY Investimento.CrossHelpers/*.csproj Investimento.CrossHelpers/
 COPY Investimento.IoC/*.csproj Investimento.IoC/
 COPY Investimento.Tests/*.csproj Investimento.Tests/
+RUN dotnet restore
 
 # Copiar todo o código e compilar a aplicação
 COPY . .

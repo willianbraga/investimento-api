@@ -20,11 +20,23 @@ namespace Investimento.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<CrossHelpers.Entities.Investimento>> BuscarInvestimentosAsync(string agencia, string conta, string dac)
+        public async Task AtualizarSaldoAsync(CrossHelpers.Entities.Investimento investimento)
+        {
+            _context.Investimentos.Update(investimento);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<CrossHelpers.Entities.Investimento>> ListarInvestimentosAsync(int contaId)
         {
             return await _context.Investimentos
-                    .Where(x => x.Agencia == agencia && x.Conta == conta && x.DAC == dac)
+                    .Where(x => x.ContaId == contaId)
                     .ToListAsync();
+        }
+
+        public async Task<CrossHelpers.Entities.Investimento?> BuscarInvestimentoAsync(string codigoProduto, int contaId)
+        {
+            return await _context.Investimentos
+                .FirstOrDefaultAsync(i => i.CodigoProduto == codigoProduto && i.ContaId == contaId);
         }
     }
 }

@@ -16,9 +16,19 @@ namespace Investimento.Domain.Services
             await _investimentoRepository.AdicionarInvestimentoAsync(investimento);
         }
 
-        public async Task<List<CrossHelpers.Entities.Investimento>> BuscarInvestimentosAsync(string agencia, string conta, string dac)
+        public async Task<List<CrossHelpers.Entities.Investimento>> ListarInvestimentosAsync(int contaId)
         {
-            return await _investimentoRepository.BuscarInvestimentosAsync(agencia, conta, dac);
+            return await _investimentoRepository.ListarInvestimentosAsync(contaId);
+        }
+
+        public async Task<CrossHelpers.Entities.Investimento?> BuscarInvestimentoAsync(string codigoProduto, int contaId)
+        {
+            return await _investimentoRepository.BuscarInvestimentoAsync(codigoProduto, contaId);
+        }
+
+        public async Task AtualizarSaldoAsync(CrossHelpers.Entities.Investimento investimento)
+        {
+            await _investimentoRepository.AtualizarSaldoAsync(investimento);
         }
     }
 }

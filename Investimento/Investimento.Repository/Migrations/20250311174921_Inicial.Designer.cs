@@ -3,6 +3,7 @@ using Investimento.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Investimento.Repository.Migrations
 {
     [DbContext(typeof(InvestimentoDbContext))]
-    partial class InvestimentoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250311174921_Inicial")]
+    partial class Inicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -16,11 +16,17 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.6.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Investimento.CrossHelpers\Investimento.CrossHelpers.csproj" />
     <ProjectReference Include="..\Investimento.Domain\Investimento.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

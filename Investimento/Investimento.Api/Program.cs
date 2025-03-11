@@ -7,6 +7,10 @@ using OpenTelemetry.Trace;
 using Serilog;
 using OpenTelemetry.Exporter;
 using Prometheus;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.OpenApi.Models;
 
 namespace Investimento
 {
@@ -54,10 +58,61 @@ namespace Investimento
             builder.Services.SetDependencyInjection();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1", new OpenApiInfo { Title = "Investimento API", Version = "v1" });
+
+                s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Description = "Insira o token JWT. Ex. Bearer XPTO",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT"
+                });
+
+                s.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] { }
+                    }
+                });
+            });
 
             builder.Services.AddHealthChecks()
                .AddCheck("Health Check", () => HealthCheckResult.Healthy("Service is running"));
+
+            var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+            var chaveSecreta = jwtSettings["Secret"];
+            var issuer = jwtSettings["Issuer"];
+            var audience = jwtSettings["Audience"];
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = issuer,
+                        ValidAudience = audience,
+                        IssuerSigningKey = new SymmetricSecurityKey(
+                            Encoding.UTF8.GetBytes(chaveSecreta))
+                    };
+                });
+
+            builder.Services.AddAuthorization();
 
             var app = builder.Build();
 
@@ -68,6 +123,7 @@ namespace Investimento
             app.UseSwagger();
             app.UseSwaggerUI();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();

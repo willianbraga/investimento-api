@@ -21,13 +21,13 @@ namespace Investimento.Tests.Services
         {
             var investimentosFake = new List<CrossHelpers.Entities.Investimento>
             {
-                new CrossHelpers.Entities.Investimento { NomeProduto = "Fundo XPTO", CodigoProduto = "XPTO", Saldo = 1000.00m, Agencia = "0001", Conta = "123456", DAC = "7" }
+                new CrossHelpers.Entities.Investimento { NomeProduto = "Fundo XPTO", CodigoProduto = "XPTO", Saldo = 1000.00m, ContaId = 1 }
             };
 
-            _mockRepository.Setup(repo => repo.BuscarInvestimentosAsync("0001", "123456", "7"))
+            _mockRepository.Setup(repo => repo.ListarInvestimentosAsync(1))
                 .ReturnsAsync(investimentosFake);
 
-            var resultado = await _investimentoService.BuscarInvestimentosAsync("0001", "123456", "7");
+            var resultado = await _investimentoService.ListarInvestimentosAsync(1);
 
             Assert.Single(resultado);
             Assert.Equal("Fundo XPTO", resultado[0].NomeProduto);
@@ -36,10 +36,10 @@ namespace Investimento.Tests.Services
         [Fact]
         public async Task Deve_Retornar_Lista_Vazia_Se_Nao_Houver_Investimentos()
         {
-            _mockRepository.Setup(repo => repo.BuscarInvestimentosAsync("0001", "123456", "7"))
+            _mockRepository.Setup(repo => repo.ListarInvestimentosAsync(1))
                 .ReturnsAsync(new List<CrossHelpers.Entities.Investimento>());
 
-            var resultado = await _investimentoService.BuscarInvestimentosAsync("0001", "123456", "7");
+            var resultado = await _investimentoService.ListarInvestimentosAsync(1);
 
             Assert.Empty(resultado);
         }

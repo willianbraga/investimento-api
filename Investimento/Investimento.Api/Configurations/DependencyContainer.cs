@@ -22,16 +22,21 @@ namespace Investimento.Api.Configurations
 
         private static void RegisterApps(IServiceCollection services)
         {
+            services.AddScoped<IAuthApp, AuthApp>();
+            services.AddScoped<IContasApp, ContasApp>();
             services.AddScoped<IInvestimentoApp, InvestimentoApp>();
         }
 
         private static void RegisterServices(IServiceCollection services)
         {
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IContasService, ContasService>();
             services.AddScoped<IInvestimentoService, InvestimentoService>();
         }
 
         private static void RegisterRepositories(IServiceCollection services)
         {
+            services.AddScoped<IContaRepository, ContaRepository>();
             services.AddScoped<IInvestimentoRepository, InvestimentoRepository>();
         }
     }
