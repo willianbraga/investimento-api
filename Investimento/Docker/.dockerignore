@@ -1,0 +1,15 @@
+bin/
+obj/
+.vscode/
+.idea/
+*.md
+*.log
+*.suo
+*.nupkg
+*.user
+*.vs/
+.git/
+.gitignore
+.env
+Docker/
+Dockerfile
