@@ -227,7 +227,12 @@ Usar serviços gerenciados da AWS para observabilidade no lugar de rodar Prometh
 6. Executar a migration para criar as tabelas
 - No terminal (CMD), executar o seguinte comando para voltar um nível na estrutura do projeto: cd ..
 - No terminal (CMD), executar o seguinte comando para acessar a pasta da API: cd Investimento.Api
-- No terminal (CMD), executar o seguinte comando para rodar a migration para garantir que o banco esteja atualizado: dotnet ef database update --connection "Server=localhost;Database=Investimento;User Id=user_api;Password=P4ssW0rd;TrustServerCertificate=True"
+- No terminal (CMD), executar o seguinte comando para rodar a migration para garantir que o banco esteja atualizado: dotnet ef database update --connection "Server=localhost,1433;Database=Investimento;User Id=user_api;Password=P4ssW0rd;TrustServerCertificate=True"
 
 7. Acessar a API
 - Abrir o navegador e acessar a URL: http://localhost:8080/swagger/index.html
+
+- Se precisar resetar os containers
+- Caso encontre problemas durante os testes, pode ser necessário resetar os containers e reconstruí-los:
+- docker-compose down -v --remove-orphans
+- docker-compose up --build
